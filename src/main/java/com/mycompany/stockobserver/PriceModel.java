@@ -20,7 +20,7 @@ public class PriceModel {
         notifyAllObservers();
     }
     public void register(Observer observer){
-        if(observer != null ) throw new NullPointerException("Null Observer");
+        if(observer == null ) throw new NullPointerException("Null Observer");
         
         if(!observers.contains(observer)) observers.add(observer);
     }
