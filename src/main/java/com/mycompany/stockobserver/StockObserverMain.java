@@ -22,7 +22,7 @@ public class StockObserver {
         priceModel.setPrice(1222.34f);
         System.out.println("Second Price change: 1300.98");
         priceModel.setPrice(1300.98f);
-        System.out.println("Third Price change: 1300.98");
+        System.out.println("Third Price change: 1500.98");
         priceModel.setPrice(1500.98f);
         
         
