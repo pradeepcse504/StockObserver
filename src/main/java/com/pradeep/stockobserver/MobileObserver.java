@@ -5,15 +5,23 @@ package com.pradeep.stockobserver;
 
 /**
  *
- * @author 
+ * @author Pradeep
  */
-public class MobileObserver extends Observer {
+public class MobileObserver implements Observer, PrinterDisplay {
+    private float price;
+    private PriceModel priceModel;
+    
     public MobileObserver(PriceModel priceModel){
         this.priceModel = priceModel;
         this.priceModel.register(this);
     }
-    @Override
-    public void update(){
+    
+    public void update(float price){
+        this.price = price;
+        display();
+    }
+    
+    public void display(){
         System.out.println("Mobile Observer price update: $" + priceModel.getPrice());
     }
 }

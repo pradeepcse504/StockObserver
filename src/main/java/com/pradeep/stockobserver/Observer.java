@@ -7,7 +7,7 @@ package com.pradeep.stockobserver;
  *
  * @author Pradeep
  */
-public abstract class Observer {
-    protected PriceModel priceModel;
-    public abstract void update();
+public interface Observer {
+    
+    public void update(float price);
 }

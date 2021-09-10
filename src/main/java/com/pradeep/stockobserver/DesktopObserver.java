@@ -5,15 +5,23 @@ package com.pradeep.stockobserver;
 
 /**
  *
- * @author 
+ * @author Pradeep
  */
-public class DesktopObserver extends Observer{
+public class DesktopObserver implements Observer, PrinterDisplay{
+    private PriceModel priceModel;
+    private float price;
+    
     public DesktopObserver(PriceModel priceModel){
         this.priceModel = priceModel;
         this.priceModel.register(this);
     }
-    @Override
-    public void update(){
+
+    public void update(float price){
+        this.price = price;
+        display();
+    }
+    
+    public void display(){
         System.out.println("Desktop Client Observer price update: $" + priceModel.getPrice());
     }
     

@@ -8,17 +8,14 @@ package com.pradeep.stockobserver;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PriceModel {
-    private List<Observer> observers = new ArrayList<Observer>();
+public class PriceModel implements Subject{
+    private List<Observer> observers ;
     private float price;
     
-    public float getPrice(){
-        return price;
+    public PriceModel(){
+        observers = new ArrayList<Observer>();
     }
-    public void setPrice(float price){
-        this.price = price;
-        notifyAllObservers();
-    }
+    
     public void register(Observer observer){
         if(observer == null ) throw new NullPointerException("Null Observer");
         
@@ -31,7 +28,19 @@ public class PriceModel {
     }
     public void notifyAllObservers(){
         for(Observer observer : observers){
-            observer.update();
+            observer.update(price);
         }
+    }  
+    public void priceChanged(){
+        notifyAllObservers();
     }
+    
+    public float getPrice(){
+        return price;
+    }
+    public void setPrice(float price){
+        this.price = price;
+        priceChanged();
+    }
+
 }
